@@ -1,0 +1,196 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Tyler Sookochoff - Personal website and blog' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <style is:global>
+      :root {
+        --bg: #fafafa;
+        --text: #1a1a1a;
+        --text-muted: #666;
+        --accent: #0066cc;
+        --border: #e0e0e0;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0a0a0a;
+          --text: #e6e6e6;
+          --text-muted: #999;
+          --accent: #4da6ff;
+          --border: #333;
+        }
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+      
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      h1, h2, h3 {
+        font-weight: 600;
+        line-height: 1.3;
+        margin: 1.5rem 0 0.75rem;
+      }
+      
+      h1 { font-size: 1.75rem; }
+      h2 { font-size: 1.35rem; }
+      h3 { font-size: 1.15rem; }
+      
+      p {
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+      
+      header {
+        margin-bottom: 3rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      
+      header h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+      
+      header h1 a {
+        color: var(--text);
+      }
+      
+      nav {
+        margin-top: 0.75rem;
+      }
+      
+      nav a {
+        margin-right: 1.25rem;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+      
+      nav a:hover {
+        color: var(--text);
+      }
+      
+      .post-list {
+        list-style: none;
+      }
+      
+      .post-list li {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      
+      .post-list li:last-child {
+        border-bottom: none;
+      }
+      
+      .post-list h2 {
+        margin: 0 0 0.25rem;
+        font-size: 1.1rem;
+      }
+      
+      .post-list h2 a {
+        color: var(--text);
+      }
+      
+      .post-meta {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+      
+      .post-description {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+      }
+      
+      article h1 {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      article .post-meta {
+        margin-bottom: 2rem;
+      }
+      
+      article p {
+        margin-bottom: 1.25rem;
+      }
+      
+      pre {
+        background: #1e1e1e;
+        padding: 1rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+      }
+      
+      code {
+        font-family: 'SF Mono', Monaco, monospace;
+        font-size: 0.9em;
+      }
+      
+      p code {
+        background: var(--border);
+        padding: 0.15rem 0.4rem;
+        border-radius: 3px;
+      }
+      
+      footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">tyler sookochoff</a></h1>
+      <nav>
+        <a href="/">home</a>
+        <a href="/blog">blog</a>
+      </nav>
+    </header>
+    <slot />
+    <footer>
+      <p>© {new Date().getFullYear()} Tyler Sookochoff</p>
+    </footer>
+  </body>
+</html>
