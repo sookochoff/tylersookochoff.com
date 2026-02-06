@@ -26,3 +26,4 @@ npm run dev
 ## Deploy
 
 Pushes to `main` branch automatically deploy via GitHub Actions.
+# Trigger build
